@@ -8,7 +8,7 @@
 .ds LH Internet Draft
 .ds CH Default Port for IRC via TLS/SSL
 .ds LF Hartmann
-.ds RH September 27, 2010
+.ds RH September 28, 2010
 .ds CF
 .hy 0
 .ad l
@@ -18,11 +18,11 @@ Internet Draft                                          Richard Hartmann
 Intended status: Informational
 Expires: March 27, 2011
 Updates: 1459, 2810, 2811, 2812, 2813
-                                                      September 27, 2010
+                                                      September 28, 2010
 
 .ce 2
 Default Port for IRC via TLS/SSL
-draft-hartmann-default-port-for-irc-via-tls-ssl-01.txt
+draft-hartmann-default-port-for-irc-via-tls-ssl-02.txt
 
 .fi
 .in 3
@@ -79,7 +79,7 @@ and 9999.
 Table of Contents
 
 .nf
-.so draft-hartmann-default-port-for-irc-via-tls-ssl-01.toc
+.so draft-hartmann-default-port-for-irc-via-tls-ssl-02.toc
 .fi
 .bp
 .hy 14
@@ -90,10 +90,10 @@ Table of Contents
 1. Rationale
 
 Although system port assignments for both plain text (TCP port 194)
-and TLS/SSL encrypted (TCP port 994) IRC traffic exist [IANALIST], it is
-common practice amongst IRC networks not to use them for reasons of
-convenience and general availability on systems where no root access is
-granted or desired.
+and TLS/SSL encrypted (TCP port 994) IRC traffic exist [RFC1700],
+[IANALIST], it is common practice amongst IRC networks not to use them
+for reasons of convenience and general availability on systems where no
+root access is granted or desired.
 
 IRC networks have defaulted to listening on TCP port 6667 for plain text
 connections for considerable time, now.  This is covered by the IRCU
@@ -106,9 +106,10 @@ TLS/SSL.
 .ti 0
 2. Security Considerations
 
-This RFC does not directly discuss security issues, however the lack of a
-common, well established listening port for IRC via TLS/SSL could lead to
-end users being unaware of their IRC network of choice supporting TLS/SSL.
+This document does not directly discuss security issues, however the lack
+of a common, well established listening port for IRC via TLS/SSL could
+lead to end users being unaware of their IRC network of choice supporting
+TLS/SSL.
 
 .ti 0
 3. IANA Considerations
@@ -128,7 +129,14 @@ document.
 .hy 0
 .in 14
 .ti 0
-5. Informative References
+5. Normative References
+
+[RFC1700] http://www.ietf.org/rfc/rfc1700.txt , Sep 28, 2010
+
+.hy 0
+.in 14
+.ti 0
+6. Informative References
 
 .ti 3
 [IANALIST] http://www.iana.org/assignments/port-numbers , Sep 15, 2010
@@ -142,7 +150,7 @@ document.
 .bp
 .in 3
 .ti 0
-6. Acknowledgements
+7. Acknowledgements
 
 Thanks go to the IRC community at large for reaching a consensus.
 
@@ -211,3 +219,13 @@ rights and licenses granted under RFC 5378, shall have any effect
 and shall be null and void, whether published or posted by such
 Contributor, or included with or in such Contribution.
 
+
+.ti 0
+Version History
+
+00 - initial version
+
+01 - fixed [MAVERICK]
+
+02 - removed self-reference as RFC
+     added reference to [RFC1700]
