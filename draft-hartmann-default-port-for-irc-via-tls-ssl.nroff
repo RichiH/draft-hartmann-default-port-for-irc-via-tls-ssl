@@ -22,7 +22,7 @@ Updates: 1459, 2810, 2811, 2812, 2813
 
 .ce 2
 Default Port for IRC via TLS/SSL
-draft-hartmann-default-port-for-irc-via-tls-ssl-02.txt
+draft-hartmann-default-port-for-irc-via-tls-ssl-03.txt
 
 .fi
 .in 3
@@ -79,7 +79,7 @@ and 9999.
 Table of Contents
 
 .nf
-.so draft-hartmann-default-port-for-irc-via-tls-ssl-02.toc
+.so draft-hartmann-default-port-for-irc-via-tls-ssl.toc
 .fi
 .bp
 .hy 14
@@ -90,10 +90,10 @@ Table of Contents
 1. Rationale
 
 Although system port assignments for both plain text (TCP port 194)
-and TLS/SSL encrypted (TCP port 994) IRC traffic exist [RFC1700],
-[IANALIST], it is common practice amongst IRC networks not to use them
-for reasons of convenience and general availability on systems where no
-root access is granted or desired.
+and TLS/SSL encrypted (TCP port 994) IRC traffic exist [IANALIST],
+it is common practice amongst IRC networks not to use them for reasons
+of convenience and general availability on systems where no root access
+is granted or desired.
 
 IRC networks have defaulted to listening on TCP port 6667 for plain text
 connections for considerable time, now.  This is covered by the IRCU
@@ -129,14 +129,7 @@ document.
 .hy 0
 .in 14
 .ti 0
-5. Normative References
-
-[RFC1700] http://www.ietf.org/rfc/rfc1700.txt , Sep 28, 2010
-
-.hy 0
-.in 14
-.ti 0
-6. Informative References
+5. Informative References
 
 .ti 3
 [IANALIST] http://www.iana.org/assignments/port-numbers , Sep 15, 2010
@@ -150,7 +143,7 @@ document.
 .bp
 .in 3
 .ti 0
-7. Acknowledgements
+6. Acknowledgements
 
 Thanks go to the IRC community at large for reaching a consensus.
 
@@ -229,3 +222,5 @@ Version History
 
 02 - removed self-reference as RFC
      added reference to [RFC1700]
+
+03 - removed reference to RFC 1700 as per RFC 3232
