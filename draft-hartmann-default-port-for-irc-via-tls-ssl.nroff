@@ -15,7 +15,8 @@
 .nf
 .\" 5678901234567 check 72 column width 12345678901234567890123456789012
 Internet Draft                                          Richard Hartmann
-Intended status: Informational
+Independent Submission
+Intended status: Experimental
 Expires: March 27, 2011
 Updates: 1459, 2810, 2811, 2812, 2813
                                                       September 28, 2010
@@ -104,27 +105,48 @@ listening on TCP port 6697 for incoming IRC connections encrypted via
 TLS/SSL.
 
 .ti 0
-2. Security Considerations
+2. Technical Details
 
-This document does not directly discuss security issues, however the lack
-of a common, well established listening port for IRC via TLS/SSL could
-lead to end users being unaware of their IRC network of choice supporting
-TLS/SSL.
+An IRC client connects to an IRC server.  Immediately after that,
+a normal TLS/SSL handshake takes place.  Once this connection has
+been established, a normal IRC connection is established via the
+tunnel.  Optionally, the IRC server may set a specific umode for
+the client, marking it as using TLS/SSL.  Again optionally, an
+IRC server might offer the option to create channels in such a way
+that only clients connected via TLS/SSL may join.
 
 .ti 0
-3. IANA Considerations
+3. Security Considerations
+
+The lack of a common, well established listening port for IRC via TLS/SSL
+could lead to end users being unaware of their IRC network of choice
+supporting TLS/SSL.  Thus, they might not use it even if they wanted to.
+
+It should be noted that this document merely describes client-to-server
+encryption.  There are still other attack vectors like malicious
+administrators, compromised servers, insecure server-to-server
+communication, channels that do not enforce encryption for all channel
+members, malicious clients or comprised client machines on which logs are
+stored.
+
+Those attacks can not be addressed by client-to-server encryption.
+Additional safe-guards are needed if a user suspects any of the threats
+above.
+
+.ti 0
+4. IANA Considerations
 
 An assignment of TCP port 6697 for IRC via TLS/SSL will be requested.
 
 .ti 0
-4. APPENDIX A: Supporting data
+5. APPENDIX A: Supporting data
 
 As of September 2010, out of the top twenty IRC networks [TOP100],[MAVERICK],
 ten support TLS/SSL.  Only one of those networks does not support TLS/SSL via
 port 6697 and has no plans to support it.  All others supported it already or
-are in the process of supporting it since being contacted by the author.  A
-detailed analysis is available but does not fit within the scope of this
-document.
+are supporting it since being contacted by the author.  A more detailed
+analysis is available but does not fit within the scope of this document.
+
 
 .hy 0
 .in 14
@@ -224,3 +246,8 @@ Version History
      added reference to [RFC1700]
 
 03 - removed reference to RFC 1700 as per RFC 3232
+
+04 - added section "Technical Details"
+     expanded section "Security Considerations"
+     Changed "Intended status" to "Experimental" at RFC authors'
+       suggestion
