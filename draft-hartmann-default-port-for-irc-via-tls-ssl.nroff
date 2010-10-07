@@ -8,7 +8,7 @@
 .ds LH Internet Draft
 .ds CH Default Port for IRC via TLS/SSL
 .ds LF Hartmann
-.ds RH September 28, 2010
+.ds RH October 7, 2010
 .ds CF
 .hy 0
 .ad l
@@ -16,17 +16,24 @@
 .\" 5678901234567 check 72 column width 12345678901234567890123456789012
 Internet Draft                                          Richard Hartmann
 Independent Submission
-Intended status: Experimental
-Expires: March 27, 2011
+Intended status: Informational
+Expires: April 4, 2011
 Updates: 1459, 2810, 2811, 2812, 2813
-                                                      September 28, 2010
+                                                         October 7, 2010
 
 .ce 2
 Default Port for IRC via TLS/SSL
-draft-hartmann-default-port-for-irc-via-tls-ssl-03.txt
+draft-hartmann-default-port-for-irc-via-tls-ssl-05
 
 .fi
 .in 3
+.ti 0
+Abstract
+
+This document describes the established best industry practice of
+listening on TCP port 6697 for incoming IRC connections encrypted via
+TLS/SSL.
+
 .ti 0
 Status of this Memo
 
@@ -59,23 +66,7 @@ include Simplified BSD License text as described in Section 4.e of
 the Trust Legal Provisions and are provided without warranty as
 described in the Simplified BSD License.
 
-.ti 0
-Comments
-
-Comments are solicited and should be addressed to the author at
-richih.mailinglist@gmail.com.
-
 .bp
-.ti 0
-Abstract
-
-This document describes the established best industry practice of
-listening on TCP port 6697 for incoming IRC connections encrypted via
-TLS/SSL.
-
-This document does not try to limit the use of lesser-used ports like 7000
-and 9999.
-
 .in 0
 Table of Contents
 
@@ -90,11 +81,11 @@ Table of Contents
 .ti 0
 1. Rationale
 
-Although system port assignments for both plain text (TCP port 194)
-and TLS/SSL encrypted (TCP port 994) IRC traffic exist [IANALIST],
-it is common practice amongst IRC networks not to use them for reasons
-of convenience and general availability on systems where no root access
-is granted or desired.
+Although system port assignments for both plain text (TCP/UDP port
+194) and TLS/SSL encrypted (TCP/UDP port 994) IRC traffic exist
+[IANALIST], it is common practice amongst IRC networks not to use
+them for reasons of convenience and general availability on systems
+where no root access is granted or desired.
 
 IRC networks have defaulted to listening on TCP port 6667 for plain text
 connections for considerable time, now.  This is covered by the IRCU
@@ -108,8 +99,8 @@ TLS/SSL.
 2. Technical Details
 
 An IRC client connects to an IRC server.  Immediately after that,
-a normal TLS/SSL handshake takes place.  Once this connection has
-been established, a normal IRC connection is established via the
+a normal TLS/SSL handshake takes place.  Once the TLS/SSL connection
+has been established, a normal IRC connection is established via the
 tunnel.  Optionally, the IRC server may set a specific umode for
 the client, marking it as using TLS/SSL.  Again optionally, an
 IRC server might offer the option to create channels in such a way
@@ -120,7 +111,8 @@ that only clients connected via TLS/SSL may join.
 
 The lack of a common, well established listening port for IRC via TLS/SSL
 could lead to end users being unaware of their IRC network of choice
-supporting TLS/SSL.  Thus, they might not use it even if they wanted to.
+supporting TLS/SSL.  Thus, they might not use encryption even if they
+wanted to.
 
 It should be noted that this document merely describes client-to-server
 encryption.  There are still other attack vectors like malicious
@@ -129,24 +121,33 @@ communication, channels that do not enforce encryption for all channel
 members, malicious clients or comprised client machines on which logs are
 stored.
 
-Those attacks can not be addressed by client-to-server encryption.
-Additional safe-guards are needed if a user suspects any of the threats
-above.
+Those attacks can by their very nature not be addressed by
+client-to-server encryption.  Additional safe-guards are needed if a
+user fears any of the threats above.
 
 .ti 0
 4. IANA Considerations
 
 An assignment of TCP port 6697 for IRC via TLS/SSL will be requested.
+The proposed keyword is "irc" and the description "Internet Relay Chat
+via TLS/SSL":
 
-.ti 0
-5. APPENDIX A: Supporting data
+.ti 3
+ircs    6697/tcp       Internet Relay Chat via TLS/SSL
 
-As of September 2010, out of the top twenty IRC networks [TOP100],[MAVERICK],
-ten support TLS/SSL.  Only one of those networks does not support TLS/SSL via
-port 6697 and has no plans to support it.  All others supported it already or
-are supporting it since being contacted by the author.  A more detailed
-analysis is available but does not fit within the scope of this document.
+A clean-up of the current naming scheme will be suggested, but not
+requested.  This is purely optional and is for reasons of house-
+keeping only.
 
+.ti 3
+ircs    994/tcp        Internet Relay Chat via TLS/SSL
+.ti 3
+ircs    994/udp        Internet Relay Chat via TLS/SSL
+
+.ti 3
+irc     6665-6669/tcp  Internet Relay Chat
+.ti 3
+irc     6665-6669/udp  Internet Relay Chat
 
 .hy 0
 .in 14
@@ -162,7 +163,6 @@ analysis is available but does not fit within the scope of this document.
 .ti 3
 [MAVERICK] http://irc.netsplit.de/networks/lists.php?query=maverick , Sep 27, 2010
 
-.bp
 .in 3
 .ti 0
 6. Acknowledgements
@@ -173,6 +173,15 @@ Special thanks go to the IRC operators who were eager to support port
 6697 on their respective networks.
 
 .ti 0
+APPENDIX A: Supporting data
+
+As of October 2010, out of the top twenty IRC networks [TOP100],[MAVERICK],
+ten support TLS/SSL.  Only one of those networks does not support TLS/SSL via
+port 6697 and has no plans to support it.  All others supported it already or
+are supporting it since being contacted by the author.  A more detailed
+analysis is available but does not fit within the scope of this document.
+
+.ti 0
 Authors' Address
 
 .nf
@@ -181,58 +190,6 @@ Munich
 Germany
 Email: richih.mailinglist@gmail.com
 http://richardhartmann.de
-
-.ti 0
-Full Copyright Statement
-
-ALL DOCUMENTS AND THE INFORMATION CONTAINED THEREIN
-ARE PROVIDED ON AN "AS IS" BASIS AND THE CONTRIBUTOR, THE
-ORGANIZATION HE/SHE REPRESENTS OR IS SPONSORED BY (IF ANY), THE
-INTERNET SOCIETY, THE IETF TRUST AND THE INTERNET ENGINEERING TASK
-FORCE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT
-LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION THEREIN
-WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF
-MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
-
-The IETF Trust takes no position regarding the validity or scope of
-any Intellectual Property Rights or other rights that might be
-claimed to pertain to the implementation or use of the technology
-described in any IETF Document or the extent to which any license
-under such rights might or might not be available; nor does it
-represent that it has made any independent effort to identify any
-such rights.
-
-Copies of Intellectual Property disclosures made to the IETF
-Secretariat and any assurances of licenses to be made available, or
-the result of an attempt made to obtain a general license or
-permission for the use of such proprietary rights by implementers
-or users of this specification can be obtained from the IETF
-on-line IPR repository at http://www.ietf.org/ipr.
-
-The IETF invites any interested party to bring to its attention any
-copyrights, patents or patent applications, or other proprietary
-rights that may cover technology that may be required to implement
-any standard or specification contained in an IETF Document. Please
-address the information to the IETF at ietf-ipr@ietf.org.
-
-The definitive version of an IETF Document is that published by, or
-under the auspices of, the IETF. Versions of IETF Documents that are
-published by third parties, including those that are translated into
-other languages, should not be considered to be definitive versions
-of IETF Documents. The definitive version of these Legal Provisions
-is that published by, or under the auspices of, the IETF. Versions of
-these Legal Provisions that are published by third parties, including
-those that are translated into other languages, should not be
-considered to be definitive versions of these Legal Provisions.
-
-For the avoidance of doubt, each Contributor to the IETF Standards
-Process licenses each Contribution that he or she makes as part of
-the IETF Standards Process to the IETF Trust pursuant to the
-provisions of RFC 5378. No language to the contrary, or terms,
-conditions or rights that differ from or are inconsistent with the
-rights and licenses granted under RFC 5378, shall have any effect
-and shall be null and void, whether published or posted by such
-Contributor, or included with or in such Contribution.
 
 
 .ti 0
@@ -251,3 +208,11 @@ Version History
      expanded section "Security Considerations"
      Changed "Intended status" to "Experimental" at RFC authors'
        suggestion
+
+05 - Moved "Abstract" to the top of the document
+     Changed "Intended status" back to "Informational"
+     Added renaming suggestions for old assignments
+     Removed section "Comments"
+     Removed ".txt" from document name
+     Removed "Full Copyright Statement"
+     Other minor clean-ups
