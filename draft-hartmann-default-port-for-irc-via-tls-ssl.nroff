@@ -8,7 +8,7 @@
 .ds LH Internet Draft
 .ds CH Default Port for IRC via TLS/SSL
 .ds LF Hartmann
-.ds RH October 7, 2010
+.ds RH October 10, 2010
 .ds CF
 .hy 0
 .ad l
@@ -17,9 +17,9 @@
 Internet Draft                                          Richard Hartmann
 Independent Submission
 Intended status: Informational
-Expires: April 4, 2011
+Expires: April 10, 2011
 Updates: 1459, 2810, 2811, 2812, 2813
-                                                         October 7, 2010
+                                                        October 10, 2010
 
 .ce 2
 Default Port for IRC via TLS/SSL
@@ -136,7 +136,7 @@ via TLS/SSL":
 ircs-u  6697/tcp       Internet Relay Chat via TLS/SSL
 
 Additionally, a clean-up of the current naming scheme will be requested.
-The author is trying to get into contact with the assignees.
+The author is trying to get into contact with the respective assignees.
 
 .ti 3
 ircs    994/tcp        Internet Relay Chat via TLS/SSL
@@ -145,15 +145,23 @@ ircs    994/udp        Internet Relay Chat via TLS/SSL
 
 .ti 3
 irc-u1  6665/tcp       Internet Relay Chat
+.ti 3
 irc-u2  6666/tcp       Internet Relay Chat
+.ti 3
 irc-u3  6667/tcp       Internet Relay Chat
+.ti 3
 irc-u4  6668/tcp       Internet Relay Chat
+.ti 3
 irc-u5  6669/tcp       Internet Relay Chat
 .ti 3
 irc-u1  6665/udp       Internet Relay Chat
+.ti 3
 irc-u2  6666/udp       Internet Relay Chat
+.ti 3
 irc-u3  6667/udp       Internet Relay Chat
+.ti 3
 irc-u4  6668/udp       Internet Relay Chat
+.ti 3
 irc-u5  6669/udp       Internet Relay Chat
 
 .hy 0
