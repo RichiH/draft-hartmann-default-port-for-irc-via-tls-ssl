@@ -237,6 +237,9 @@ irc-u5  6669/udp       Internet Relay Chat
 .ti 3
 [MAVERICK] http://irc.netsplit.de/networks/lists.php?query=maverick , Sep 27, 2010
 
+.ti 3
+[CERTFP] http://www.oftc.net/oftc/NickServ/CertFP , Mar 17 2011
+
 .hy 0
 .in 14
 .ti 0
