@@ -8,7 +8,7 @@
 .ds LH Internet Draft
 .ds CH Default Port for IRC via TLS/SSL
 .ds LF Hartmann
-.ds RH October 10, 2010
+.ds RH March 17, 2011
 .ds CF
 .hy 0
 .ad l
@@ -17,22 +17,21 @@
 Internet Draft                                          Richard Hartmann
 Independent Submission
 Intended status: Informational
-Expires: April 10, 2011
+Expires: September 17, 2011
 Updates: 1459, 2810, 2811, 2812, 2813
-                                                        October 10, 2010
+                                                          March 17, 2011
 
 .ce 2
 Default Port for IRC via TLS/SSL
-draft-hartmann-default-port-for-irc-via-tls-ssl-06
+draft-hartmann-default-port-for-irc-via-tls-ssl-07
 
 .fi
 .in 3
 .ti 0
 Abstract
 
-This document describes the established best industry practice of
-listening on TCP port 6697 for incoming IRC connections encrypted via
-TLS/SSL.
+This document describes the commonly accepted practice of listening on
+TCP port 6697 for incoming IRC connections encrypted via TLS/SSL.
 
 .ti 0
 Status of this Memo
@@ -98,6 +97,9 @@ TLS/SSL.
 .ti 0
 2. Technical Details
 
+.ti 0
+2.1. Connection Establishment
+
 An IRC client connects to an IRC server.  Immediately after that,
 a normal TLS/SSL handshake takes place.  Once the TLS/SSL connection
 has been established, a normal IRC connection is established via the
@@ -105,6 +107,57 @@ tunnel.  Optionally, the IRC server may set a specific umode for
 the client, marking it as using TLS/SSL.  Again optionally, an
 IRC server might offer the option to create channels in such a way
 that only clients connected via TLS/SSL may join.
+
+For details on how IRC works, see [RFC1459], [RFC2810], [RFC2811],
+[RFC2812], [RFC2813].  Please note that IRC is extremely fragmented
+and implementation details can vary wildly. Most implementations
+regard the latter RFCs as suggestions, not as binding.
+
+.ti 0
+2.2. Why Not STARTTLS
+
+Due to the highly asynchronous nature of IRC, everything other than
+suspending the whole connection, running STARTTLS and resuming the
+connection wouldn't work.  As there is no concept of suspended
+connections in IRC, this would require significant effort on the
+server side and effort on the client side, as well.
+
+The general consensus is that STARTTLS is not worth the effort and
+that no one is willing to implement it.
+
+While newer protocols can easily design for STARTTLS from the start,
+IRC is a legacy protocol; implementing STARTTLS in IRC is not
+realistic.
+
+.ti 0
+2.3. Certiticate Details
+
+.ti 0
+2.3.1. Server Certificate
+
+The IRC server's certificate should be issued by a commonly trusted CA.
+
+The Common Name should match the FQDN of the IRC server or have
+appropriate wildcards, if applicable.
+
+The IRC client should verify the certificate.
+
+.ti 0
+2.3.2. Client Certificate
+
+If the client is using a certificate as well, it should be issued by
+a commonly trusted CA or a CA designated by the IRC network.
+
+The certificate's Common Name should match the main IRC nickname.
+
+If the network offers nick registration, this nick should be used.
+
+If the network offers grouped nicks, the main nick or account name
+should be used.
+
+If the network offers nick registration, the client certificate should
+be used to identify the user against the nick database. See [CERTFP]
+for a possible implementation.
 
 .ti 0
 3. Security Considerations
@@ -125,12 +178,18 @@ Those attacks can by their very nature not be addressed by
 client-to-server encryption.  Additional safe-guards are needed if a
 user fears any of the threats above.
 
+This document does not address server links as there are no commonly
+accepted ports or even back-end protocols.  Ports and back-end protocols
+are normally established in a bilateral agreement.  All operators are
+encouraged to use strong encryption for back-end traffic, no matter if
+they offer IRC via TLS/SSL to end users.
+
 .ti 0
 4. IANA Considerations
 
 An assignment of TCP port 6697 for IRC via TLS/SSL will be requested.
-The proposed keyword is "irc" and the description "Internet Relay Chat
-via TLS/SSL":
+The proposed keyword is "ircs-u" and the description "Internet Relay
+Chat via TLS/SSL":
 
 .ti 3
 ircs-u  6697/tcp       Internet Relay Chat via TLS/SSL
@@ -178,6 +237,26 @@ irc-u5  6669/udp       Internet Relay Chat
 .ti 3
 [MAVERICK] http://irc.netsplit.de/networks/lists.php?query=maverick , Sep 27, 2010
 
+.hy 0
+.in 14
+.ti 0
+5. Normative References
+
+.ti 3
+[RFC1459] J. Oikarinen, Internet Relay Chat Protocol
+
+.ti 3
+[RFC2810] C. Kalt, Internet Relay Chat: Architecture
+
+.ti 3
+[RFC2811] C. Kalt, Internet Relay Chat: Channel Management
+
+.ti 3
+[RFC2812] C. Kalt, Internet Relay Chat: Client Protocol
+
+.ti 3
+[RFC2813] C. Kalt, Internet Relay Chat: Server Protocol
+
 .in 3
 .ti 0
 6. Acknowledgements
@@ -186,6 +265,10 @@ Thanks go to the IRC community at large for reaching a consensus.
 
 Special thanks go to the IRC operators who were eager to support port
 6697 on their respective networks.
+
+Special thanks also go to Nevil Brownlee and James Schaad for working
+on this document in their capacities as RFC Editor and Reviewer,
+respectively.
 
 .ti 0
 APPENDIX A: Supporting data
@@ -233,3 +316,5 @@ Version History
      Other minor clean-ups
 
 06 - Introduced unique port keys
+
+07 - Extended document based on feedback by James Schaad
