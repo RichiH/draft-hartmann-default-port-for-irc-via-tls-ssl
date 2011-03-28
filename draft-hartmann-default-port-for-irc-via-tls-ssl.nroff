@@ -8,7 +8,7 @@
 .ds LH Internet Draft
 .ds CH Default Port for IRC via TLS/SSL
 .ds LF Hartmann
-.ds RH March 17, 2011
+.ds RH March 28, 2011
 .ds CF
 .hy 0
 .ad l
@@ -17,9 +17,9 @@
 Internet Draft                                          Richard Hartmann
 Independent Submission
 Intended status: Informational
-Expires: September 17, 2011
-Updates: 1459, 2810, 2811, 2812, 2813
-                                                          March 17, 2011
+Expires: September 28, 2011
+Updates: 1459, 2812, 2813
+                                                          March 28, 2011
 
 .ce 2
 Default Port for IRC via TLS/SSL
@@ -81,8 +81,8 @@ Table of Contents
 1. Rationale
 
 Although system port assignments for both plain text (TCP/UDP port
-194) and TLS/SSL encrypted (TCP/UDP port 994) IRC traffic exist
-[IANALIST], it is common practice amongst IRC networks not to use
+194) and TLS/SSL [RFC5246] encrypted (TCP/UDP port 994) IRC traffic
+exist [IANALIST], it is common practice amongst IRC networks not to use
 them for reasons of convenience and general availability on systems
 where no root access is granted or desired.
 
@@ -259,6 +259,9 @@ irc-u5  6669/udp       Internet Relay Chat
 
 .ti 3
 [RFC2813] C. Kalt, Internet Relay Chat: Server Protocol
+
+.ti 3
+[RFC5246] T. Dierks, E. Rescorla, The Transport Layer Security (TLS) Protocol Version 1
 
 .in 3
 .ti 0
