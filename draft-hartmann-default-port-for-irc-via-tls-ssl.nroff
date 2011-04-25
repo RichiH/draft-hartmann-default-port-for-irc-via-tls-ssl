@@ -8,7 +8,7 @@
 .ds LH Internet Draft
 .ds CH Default Port for IRC via TLS/SSL
 .ds LF Hartmann
-.ds RH March 28, 2011
+.ds RH April 23, 2011
 .ds CF
 .hy 0
 .ad l
@@ -17,9 +17,9 @@
 Internet Draft                                          Richard Hartmann
 Independent Submission
 Intended status: Informational
-Expires: September 28, 2011
+Expires: October 23, 2011
 Updates: 1459, 2812, 2813
-                                                          March 28, 2011
+                                                          April 23, 2011
 
 .ce 2
 Default Port for IRC via TLS/SSL
@@ -323,6 +323,5 @@ Version History
 
 06 - Introduced unique port keys
 
-07 - Extended document based on feedback by James Schaad
-
-08 - Incorporated some feedback by Mykyta Yevstifeyev
+07 - Extended document based on feedback by James Schaad and
+     Mykyta Yevstifeyev
