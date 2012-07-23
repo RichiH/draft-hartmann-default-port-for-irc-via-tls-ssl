@@ -8,7 +8,7 @@
 .ds LH Internet Draft
 .ds CH Default Port for IRC via TLS/SSL
 .ds LF Hartmann
-.ds RH April 23, 2011
+.ds RH July 23, 2012
 .ds CF
 .hy 0
 .ad l
@@ -17,13 +17,13 @@
 Internet Draft                                          Richard Hartmann
 Independent Submission
 Intended status: Informational
-Expires: October 23, 2011
+Expires: January 23, 2012
 Updates: 1459, 2812, 2813
-                                                          April 23, 2011
+                                                           July 23, 2011
 
 .ce 2
 Default Port for IRC via TLS/SSL
-draft-hartmann-default-port-for-irc-via-tls-ssl-07
+draft-hartmann-default-port-for-irc-via-tls-ssl-08
 
 .fi
 .in 3
@@ -194,35 +194,6 @@ Chat via TLS/SSL":
 .ti 3
 ircs-u  6697/tcp       Internet Relay Chat via TLS/SSL
 
-Additionally, a clean-up of the current naming scheme will be requested.
-The author is trying to get into contact with the respective assignees.
-
-.ti 3
-ircs    994/tcp        Internet Relay Chat via TLS/SSL
-.ti 3
-ircs    994/udp        Internet Relay Chat via TLS/SSL
-
-.ti 3
-irc-u1  6665/tcp       Internet Relay Chat
-.ti 3
-irc-u2  6666/tcp       Internet Relay Chat
-.ti 3
-irc-u3  6667/tcp       Internet Relay Chat
-.ti 3
-irc-u4  6668/tcp       Internet Relay Chat
-.ti 3
-irc-u5  6669/tcp       Internet Relay Chat
-.ti 3
-irc-u1  6665/udp       Internet Relay Chat
-.ti 3
-irc-u2  6666/udp       Internet Relay Chat
-.ti 3
-irc-u3  6667/udp       Internet Relay Chat
-.ti 3
-irc-u4  6668/udp       Internet Relay Chat
-.ti 3
-irc-u5  6669/udp       Internet Relay Chat
-
 .hy 0
 .in 14
 .ti 0
@@ -324,4 +295,7 @@ Version History
 06 - Introduced unique port keys
 
 07 - Extended document based on feedback by James Schaad and
-     Mykyta Yevstifeyev
+       Mykyta Yevstifeyev
+
+08 - Removed naming updates to 6665-6669/TCP and 994/TCP (i.e. unique port keys)
+       at the request of Pearl Liang (IANA staff) and Nevil Brownlee (RFC Editor)
