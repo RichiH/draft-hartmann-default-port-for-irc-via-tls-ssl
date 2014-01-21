@@ -17,13 +17,13 @@
 Internet Draft                                          Richard Hartmann
 Independent Submission
 Intended status: Informational
-Expires: January 23, 2012
-Updates: 1459, 2812, 2813
-                                                           July 23, 2011
+Expires: July 22, 2014
+Updates: 1459
+                                                        January 22, 2014
 
 .ce 2
 Default Port for IRC via TLS/SSL
-draft-hartmann-default-port-for-irc-via-tls-ssl-08
+draft-hartmann-default-port-for-irc-via-tls-ssl-09
 
 .fi
 .in 3
@@ -114,26 +114,10 @@ and implementation details can vary wildly. Most implementations
 regard the latter RFCs as suggestions, not as binding.
 
 .ti 0
-2.2. Why Not STARTTLS
-
-Due to the highly asynchronous nature of IRC, everything other than
-suspending the whole connection, running STARTTLS and resuming the
-connection wouldn't work.  As there is no concept of suspended
-connections in IRC, this would require significant effort on the
-server side and effort on the client side, as well.
-
-The general consensus is that STARTTLS is not worth the effort and
-that no one is willing to implement it.
-
-While newer protocols can easily design for STARTTLS from the start,
-IRC is a legacy protocol; implementing STARTTLS in IRC is not
-realistic.
+2.2. Certiticate Details
 
 .ti 0
-2.3. Certiticate Details
-
-.ti 0
-2.3.1. Server Certificate
+2.2.1. Server Certificate
 
 The IRC server's certificate should be issued by a commonly trusted CA.
 
@@ -143,7 +127,7 @@ appropriate wildcards, if applicable.
 The IRC client should verify the certificate.
 
 .ti 0
-2.3.2. Client Certificate
+2.2.2. Client Certificate
 
 If the client is using a certificate as well, it should be issued by
 a commonly trusted CA or a CA designated by the IRC network.
@@ -299,3 +283,5 @@ Version History
 
 08 - Removed naming updates to 6665-6669/TCP and 994/TCP (i.e. unique port keys)
        at the request of Pearl Liang (IANA staff) and Nevil Brownlee (RFC Editor)
+
+09 - Removed updates to RFCs 2812 and 2813, and to STARTTLS
