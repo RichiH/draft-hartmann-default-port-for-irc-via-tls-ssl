@@ -1,0 +1,8 @@
+This ID has been accepted and has become RFC 7194[1].
+
+During the initial work of collection information, most if not all IRC
+networks either already supported TLS on port 6697 or decided to start
+doing to as someone was trying to create a common standard.
+As of today, I would call it a de facto standard.
+
+[1] https://tools.ietf.org/html/rfc7194
